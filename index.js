@@ -12,6 +12,8 @@
     var clock = new PolarClock(canvas, point, 15, 2);
     clock.color = ["#444", "#555", "#666", "#777", "#888", "#999"];
     clock.start(25);
+
+    startTime();
   };
   
   
@@ -87,14 +89,15 @@
     var line = this.line;
     var margin = this.margin;
     var color = this.color;
-    
+    // console.log(point);
     this.clear();
     if (color[0]) this.draw(0, point, now.second);
     if (color[1]) this.draw(1, point, now.minute);
-    if (color[2]) this.draw(2, point, now.hour);
-    if (color[3]) this.draw(3, point, now.weekday);
-    if (color[4]) this.draw(4, point, now.date);
-    if (color[5]) this.draw(5, point, now.month);
+    if (color[2]) this.draw(5, point, 7); // circle
+    // if (color[2]) this.draw(2, point, now.hour);
+    // if (color[3]) this.draw(3, point, now.weekday);
+    // if (color[4]) this.draw(4, point, now.date);
+    // if (color[5]) this.draw2(5, point, now.month);
   };
   
   /**
@@ -104,6 +107,16 @@
    * @param {Number} radian
    */
   PolarClock.prototype.draw = function(index, point, radian) {
+    this.point = new Point(
+      point.x,
+      point.y,
+      point.radius - (this.line + this.margin) * index
+    );
+    
+    this.arc(this.color[index], this.line, 0, radian);
+  };
+
+  PolarClock.prototype.draw2 = function(index, point, radian) {
     this.point = new Point(
       point.x,
       point.y,
@@ -134,6 +147,9 @@
     context.beginPath();
     context.arc(x, y, r, start, end, false);
     context.stroke();
+    // context.font = "10px Arial";
+    // context.strokeText("Big smile!",-200,-9);
+
     context.restore();
   };
   
@@ -180,4 +196,40 @@
     }
   };
   
+  /* digital clock */
+  function startTime() {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var date = today.getDate();
+    var d = today.getDay();
+
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    month = checkTime(month);
+    date = checkTime(date);
+    m = checkTime(m);
+    s = checkTime(s);
+
+    var weekday = new Array(7);
+    weekday[0]=  "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+
+    document.getElementById('day').innerHTML = weekday[d];
+    document.getElementById('time').innerHTML = h+":"+m;
+    document.getElementById('date').innerHTML = year+" "+month+" "+date;
+    var t = setTimeout(function(){startTime()},500);
+  }
+
+  function checkTime(i) {
+    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+  }
+
 })();
