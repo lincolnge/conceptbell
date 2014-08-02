@@ -6,3 +6,6 @@ Digital Clock:
 
 Canvas:  
 <http://codepen.io/pankajparashar/pen/sIpyw>
+
+HTML Canvas:  
+<http://www.w3schools.com/html/html5_canvas.asp>

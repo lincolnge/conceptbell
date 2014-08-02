@@ -2,15 +2,26 @@
   <head>
     <link rel="stylesheet" href="index.css" />
     <script type="text/javascript" src="index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
 <body>
 
-<canvas id="canvas" width="400" height="400"></canvas>
-<div style="position: fixed; left: 46%; top: 182px;">
-	<div id="day">Monday</div>
-	<div id="time">09:30</div>
-	<div id="date">2014 07 31</div>
+<div class="" style="margin: auto; text-align: center">
+	<canvas id="canvas" width="300" height="300" style=""></canvas>
+	<div class="digital_area">
+		<div class="day area_padd">
+			<span id="day" class="day area">Monday</span>
+		</div>
+		<div class="time area_padd">
+			<span id="time_hour" class="time area">09</span>
+			<span id="time_min" class="time area">30</span>
+		</div>
+		<div class="date area_padd">
+			<span id="date_y" class="area">2014</span>
+			<span id="date_m" class="area">07</span>
+			<span id="date_d" class="area">31</span>
+		</div>
+	</div>
 </div>
-
 </body>
 </html>

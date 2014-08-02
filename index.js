@@ -8,9 +8,9 @@
   window.onload = function(e){
     var canvas = document.getElementById("canvas");
     
-    var point = new Point(200, 200, 180);
-    var clock = new PolarClock(canvas, point, 15, 2);
-    clock.color = ["#444", "#555", "#666", "#777", "#888", "#999"];
+    var point = new Point(150, 150, 140);
+    var clock = new PolarClock(canvas, point, 12, 2);
+    clock.color = ["red", "#bbb", "red", "#ccc", "#ddd", "#eee"];
     clock.start(25);
 
     startTime();
@@ -89,11 +89,20 @@
     var line = this.line;
     var margin = this.margin;
     var color = this.color;
-    // console.log(point);
     this.clear();
-    if (color[0]) this.draw(0, point, now.second);
-    if (color[1]) this.draw(1, point, now.minute);
-    if (color[2]) this.draw(5, point, 7); // circle
+    this.drawMargin(3, point, 7, 1, 137);
+    this.drawMargin(4, point, 7, 1, 134);
+    this.drawMargin(5, point, 7, 1, 118);
+    this.drawMargin(4, point, 7, 1, 115);
+    this.drawMargin(4, point, 7, 1, 105);
+    this.drawMargin(5, point, 7, 1, 103);
+    this.drawMargin(4, point, 7, 1, 82);
+    this.drawMargin(4, point, 7, 1, 79);
+    this.drawMargin(4, point, 7, 1, 69);
+    this.drawMargin(5, point, 7, 1, 67);
+
+    if (color[0]) this.draw2(0, point, now.second, 15);
+    if (color[1]) this.draw2(2, point, now.minute, 20);
     // if (color[2]) this.draw(2, point, now.hour);
     // if (color[3]) this.draw(3, point, now.weekday);
     // if (color[4]) this.draw(4, point, now.date);
@@ -112,20 +121,26 @@
       point.y,
       point.radius - (this.line + this.margin) * index
     );
-    
     this.arc(this.color[index], this.line, 0, radian);
   };
 
-  PolarClock.prototype.draw2 = function(index, point, radian) {
+  PolarClock.prototype.draw2 = function(index, point, radian, line) {
     this.point = new Point(
       point.x,
       point.y,
       point.radius - (this.line + this.margin) * index
     );
-    
-    this.arc(this.color[index], this.line, 0, radian);
+    this.arc(this.color[index], line, 0, radian);
   };
-  
+
+  PolarClock.prototype.drawMargin = function(index, point, radian, line, radius) {
+    this.point = new Point(
+      point.x,
+      point.y,
+      radius
+    );
+    this.arc(this.color[index], line, 0, radian);
+  };
   /**
    *
    * @param {String} color
@@ -213,17 +228,22 @@
     s = checkTime(s);
 
     var weekday = new Array(7);
-    weekday[0]=  "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    weekday[0]=  "SUNDAY";
+    weekday[1] = "MONDAY";
+    weekday[2] = "TUESDAY";
+    weekday[3] = "WEDNESDAY";
+    weekday[4] = "THURSDAY";
+    weekday[5] = "FRIDAY";
+    weekday[6] = "SATURDAY";
 
     document.getElementById('day').innerHTML = weekday[d];
-    document.getElementById('time').innerHTML = h+":"+m;
-    document.getElementById('date').innerHTML = year+" "+month+" "+date;
+
+    document.getElementById('time_hour').innerHTML = h;
+    document.getElementById('time_min').innerHTML = m;
+
+    document.getElementById('date_y').innerHTML = year;
+    document.getElementById('date_m').innerHTML = month;
+    document.getElementById('date_d').innerHTML = date;
     var t = setTimeout(function(){startTime()},500);
   }
 
