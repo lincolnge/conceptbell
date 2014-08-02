@@ -224,6 +224,7 @@
     var s = today.getSeconds();
     month = checkTime(month);
     date = checkTime(date);
+    h = checkTime(h);
     m = checkTime(m);
     s = checkTime(s);
 
