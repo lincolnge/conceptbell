@@ -222,7 +222,7 @@
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
-    month = checkTime(month);
+    month = checkTime(month+1);
     date = checkTime(date);
     h = checkTime(h);
     m = checkTime(m);
