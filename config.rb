@@ -12,7 +12,7 @@ javascripts_dir = "js"
 # output_style = :expanded or :nested or :compact or :compressed
 
 # 压缩输出方式
-# output_style = :compressed
+output_style = :compressed
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # 打开相对资源路径功能

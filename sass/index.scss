@@ -4,9 +4,6 @@ body {
 
 .day {
 	font-size: 10px;
-}
-
-.day {
 	&.area {
 		background-color: whitesmoke;
 	}
@@ -23,7 +20,7 @@ body {
 .area {
 	border: 1 solid lightgray;
 	border-radius: 4px;
-	/*background-color: #F2F2F2;*/
+	// background-color: #F2F2F2;
 	padding: 2px;
 }
 
