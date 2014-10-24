@@ -204,7 +204,7 @@
     var year = date.getYear();
     var month = date.getMonth();
     
-    if (month == 1 && year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+    if (month == 1 && year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
       return 29;
     } else {
       return days[month];
@@ -245,11 +245,11 @@
     document.getElementById('date_y').innerHTML = year;
     document.getElementById('date_m').innerHTML = month;
     document.getElementById('date_d').innerHTML = date;
-    var t = setTimeout(function(){startTime()},500);
+    var t = setTimeout(function(){startTime();},500);
   }
 
   function checkTime(i) {
-    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i<10) {i = "0" + i;}  // add zero in front of numbers < 10
     return i;
   }
 
