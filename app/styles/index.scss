@@ -1,36 +1,33 @@
-body { 
-	text-align:center; 
+body {
+    text-align: center;
 }
-
+.mainbody {
+    margin: auto;
+    text-align: center;
+}
 .day {
-	font-size: 10px;
-	&.area {
-		background-color: whitesmoke;
-	}
+    font-size: 10px;
+    &.area {
+        background-color: whitesmoke;
+    }
 }
-
 .time {
-	font-size: 28px;
+    font-size: 28px;
 }
-
 .date {
-	font-size: 10px;
+    font-size: 10px;
 }
-
 .area {
-	border: 1 solid lightgray;
-	border-radius: 4px;
-	// background-color: #F2F2F2;
-	padding: 2px;
+    border: 1 solid lightgray;
+    border-radius: 4px;
+    padding: 2px;
 }
-
 .area_padd {
-	padding: 7px;
+    padding: 7px;
 }
-
 .digital_area {
-	position: absolute;
-	left: 50%;
-	margin-left: -44px;
-	top: 108px;
+    position: absolute;
+    left: 50%;
+    margin-left: -44px;
+    top: 108px;
 }
